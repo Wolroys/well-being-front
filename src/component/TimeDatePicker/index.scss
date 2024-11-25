@@ -1,0 +1,36 @@
+@import "/src/style/mixins";
+
+.TimeDatePicker {
+  display: flex;
+  align-items: center;
+  height: dynamic-vw(1920, 40px);
+
+  .ant-dropdown-trigger {
+    height: 100%;
+    width: dynamic-vw(1920, 65px);
+    padding: dynamic-vw(1920, 9px) dynamic-vw(1920, 13px);
+    border: 1px solid #7b839599;
+    border-top-left-radius: dynamic-vw(1920, 10px);
+    border-bottom-left-radius: dynamic-vw(1920, 10px);
+    font-size: dynamic-vw(1920, 14px);
+    line-height: dynamic-vw(1920, 20px);
+    font-family: "Raleway", sans-serif;
+    color: #172b4d;
+  }
+
+  &__date {
+    width: dynamic-vw(1920, 108px);
+    height: 100%;
+    padding: dynamic-vw(1920, 9px) dynamic-vw(1920, 13px);
+    border: 1px solid #7b839599;
+    border-left: none;
+    border-top-right-radius: dynamic-vw(1920, 10px);
+    border-bottom-right-radius: dynamic-vw(1920, 10px);
+    input {
+      font-size: dynamic-vw(1920, 14px);
+      line-height: dynamic-vw(1920, 20px);
+      font-family: "Raleway", sans-serif;
+      color: #172b4d;
+    }
+  }
+}

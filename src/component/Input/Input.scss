@@ -1,0 +1,251 @@
+@import "../../style/constants.scss";
+@import "../../style/variables";
+@import "/src/style/mixins";
+
+.primaryInput {
+  border-color: $stroke-input-default;
+  border-radius: dynamic-vw(1920, 10px);
+  height: dynamic-vw(1920, 40px);
+  @extend %raleway-regular;
+  font-size: dynamic-vw(1920, 16px);
+  line-height: dynamic-vw(1920, 22px);
+  color: $primary-text;
+  padding: dynamic-vw(1920, 9px) dynamic-vw(1920, 12px);
+
+  &::placeholder {
+    color: $gray !important;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    border-color: $primary-color !important;
+    box-shadow: 0px 0px dynamic-vw(1920, 6px) 0px $shadow-input !important;
+
+    .ant-input-prefix svg path {
+      fill: $primary-color !important;
+    }
+  }
+
+  &:disabled {
+    border-color: $stroke-input-default !important;
+    background-color: $input-fill-disabled !important;
+    color: $quaternary-color !important;
+    opacity: 0.5;
+
+    &:hover,
+    &:active,
+    &:focus {
+      border-color: $stroke-input-default !important;
+      box-shadow: none !important;
+    }
+  }
+}
+
+.chatInput {
+  background: $white;
+  border-radius: dynamic-vw(1920, 30px);
+  @extend %raleway-regular;
+  font-size: dynamic-vw(1920, 14px);
+  line-height: dynamic-vw(1920, 20px);
+  color: $primary-text;
+  padding: dynamic-vw(1920, 11px) dynamic-vw(1920, 20px);
+  border: 1px solid $quaternary-color-60;
+  outline: 0;
+  box-shadow: none;
+
+  &::placeholder {
+    color: $gray !important;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    border: 1px solid $primary-color;
+    box-shadow: 0px 0px dynamic-vw(1920, 6px) 0px $shadow-input;
+  }
+
+  &:disabled {
+    border: 0;
+    box-shadow: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      border: 0;
+      box-shadow: none;
+    }
+  }
+}
+
+.searchBoxInput {
+  @extend %raleway-regular;
+  font-size: dynamic-vw(1920, 14px);
+  line-height: dynamic-vw(1920, 16px);
+  background: $bg-color;
+  color: $primary-text;
+  border-radius: dynamic-vw(1920, 10px);
+  padding: dynamic-vw(1920, 10px);
+  width: dynamic-vw(1920, 38px);
+  height: dynamic-vw(1920, 38px);
+  cursor: pointer;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.entered {
+    width: dynamic-vw(1920, 400px) !important;
+    background: #ffffff;
+    box-shadow: none;
+    border: 1px solid $stroke-input-default;
+    border-radius: dynamic-vw(1920, 10px);
+
+    .ant-input-prefix {
+      order: 2;
+
+      svg {
+        width: dynamic-vw(1920, 14px);
+        height: dynamic-vw(1920, 14px);
+
+        g {
+          circle {
+            stroke: $quaternary-color;
+          }
+
+          path {
+            stroke: $quaternary-color;
+          }
+        }
+      }
+    }
+  }
+
+  &::placeholder {
+    color: $gray !important;
+  }
+
+  &:hover {
+    background: $white-600;
+  }
+
+  &:active {
+    background: $primarylight-color;
+  }
+
+  &:focus {
+    background: $white;
+    border-color: $primary-color !important;
+    box-shadow: 0px 0px dynamic-vw(1920, 6px) 0px $shadow-input !important;
+
+    input {
+      background: $white;
+    }
+  }
+
+  &:disabled {
+    border-color: $stroke-input-default !important;
+    background-color: $input-fill-disabled !important;
+    color: $quaternary-color !important;
+    opacity: 0.5;
+
+    &:hover,
+    &:active,
+    &:focus {
+      border-color: $stroke-input-default;
+      box-shadow: none;
+    }
+  }
+
+  .ant-input-prefix {
+    margin: 0 dynamic-vw(1920, 4px) 0 dynamic-vw(1920, 4px);
+  }
+}
+
+.ant-input-affix-wrapper-focused.searchBoxInput {
+  width: dynamic-vw(1920, 400px) !important;
+  background: #ffffff;
+  box-shadow: none;
+  border: 1px solid $stroke-input-default;
+  border-radius: dynamic-vw(1920, 10px);
+
+  .ant-input-prefix {
+    order: 2;
+
+    svg {
+      // width: 14px;
+      // height: 14px;
+
+      g {
+        circle {
+          stroke: $quaternary-color;
+        }
+
+        path {
+          stroke: $quaternary-color;
+        }
+      }
+    }
+  }
+}
+
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+  border-color: $primary-color !important;
+}
+
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+  border-color: $primary-color !important;
+  box-shadow: 0px 0px dynamic-vw(1920, 6px) 0px $shadow-input !important;
+}
+
+.ant-input-affix-wrapper:hover {
+  border-color: $primary-color !important;
+  border-right-width: dynamic-vw(1920, 1px);
+}
+
+.searchDropdownInput {
+  @extend %raleway-regular;
+  font-size: dynamic-vw(1920, 14px);
+  line-height: dynamic-vw(1920, 16px);
+  color: $primary-text;
+  border-radius: 0;
+  cursor: pointer;
+  border: 0;
+  padding: dynamic-vw(1920, 11px) dynamic-vw(1920, 16px);
+  cursor: text;
+  box-shadow: none !important;
+
+  &::placeholder {
+    color: $gray !important;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  &:disabled {
+    border: 0 !important;
+    box-shadow: none !important;
+
+    &:hover,
+    &:active,
+    &:focus {
+      border: 0 !important;
+      box-shadow: none !important;
+    }
+  }
+
+  .ant-input-prefix {
+    margin: 0 dynamic-vw(1920, 4px) 0 dynamic-vw(1920, 4px);
+    order: 1;
+
+    svg {
+      width: dynamic-vw(1920, 14px);
+      height: dynamic-vw(1920, 14px);
+    }
+  }
+}

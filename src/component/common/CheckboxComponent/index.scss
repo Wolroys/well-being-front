@@ -1,0 +1,48 @@
+@import "../../../style/constants.scss";
+@import "../../../style/variables";
+
+.CheckboxComponent {
+  cursor: pointer;
+
+  &__round,
+  &__square {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+
+    &-check {
+      background-color: $primary-color;
+      width: 10px;
+      height: 10px;
+      transition: 0.3s;
+    }
+  }
+
+  &__round {
+    border-radius: 50%;
+    border: 2px solid $primary-text;
+    padding: 2px;
+
+    &-check {
+      border-radius: 50%;
+    }
+  }
+
+  &__square {
+    border-radius: 3px;
+    border: 0.75px solid $primary-text;
+
+    &-check {
+      border-radius: 2px;
+    }
+
+    &-error {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

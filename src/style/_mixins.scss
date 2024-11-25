@@ -1,0 +1,44 @@
+@use "sass:math";
+@import "./variables";
+
+// Миксин для создания кастомного скролла
+@mixin custom-scroll {
+  // overflow: auto;
+  // scrollbar-width: thin;
+  // scrollbar-color: $closeremarkcolor transparent;
+
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-thumb {
+    background-color: $closeremarkcolor;
+    border-radius: 6px;
+  }
+}
+
+
+// функция расчета динамического размера в px в зависимости от ширины экрана
+@function dynamic-vw($vw-viewport, $font) {
+  $vw-context: $vw-viewport * 0.01 * 1px;
+  @return math.div($font, $vw-context) * 1vw;
+  @return $font;
+}
+
+@function dynamic-vh($vw-viewport, $font) {
+  $vw-context: $vw-viewport * 0.01 * 1px;
+  @return math.div($font, $vw-context) * 1vh;
+  @return $font;
+}
+
+$main-shadow: dynamic-vw(1920, -2px) dynamic-vw(1920, 2px)
+dynamic-vw(1920, 10px) 0px rgba(0, 0, 0, 0.14);

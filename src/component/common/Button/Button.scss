@@ -1,0 +1,440 @@
+@import "../../../style/constants.scss";
+@import "../../../style/variables";
+@import "/src/style/mixins";
+
+.primaryButton {
+  @extend %raleway-medium;
+  font-size: dynamic-vw(1920, 14px);
+  line-height: dynamic-vw(1920, 18px);
+  border-radius: dynamic-vw(1920, 10px);
+  border: none;
+  color: $white;
+  box-shadow: dynamic-vw(1920, -2px) dynamic-vw(1920, 2px)
+  dynamic-vw(1920, 10px) 0px rgba(0, 0, 0, 0.1);
+  height: max-content;
+
+  &.big {
+    padding: dynamic-vw(1920, 10px) dynamic-vw(1920, 30px);
+  }
+
+  &.small {
+    padding: dynamic-vw(1920, 7px) dynamic-vw(1920, 16px);
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $white;
+    box-shadow: dynamic-vw(1920, -2px) dynamic-vw(1920, 2px)
+    dynamic-vw(1920, 10px) 0px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  &.colorPrimary {
+    background: $primary-color;
+
+    &:hover {
+      background: $primary-color-hover;
+    }
+
+    &:active {
+      background: $primary-color-active;
+      transform: scale(0.98);
+    }
+
+    &:disabled,
+    &:disabled:hover,
+    &:disabled:active,
+    &:disabled:focus {
+      background: $gray;
+      color: $quaternary-color;
+      box-shadow: dynamic-vw(1920, -2px) dynamic-vw(1920, 2px)
+      dynamic-vw(1920, 10px) 0px rgba(0, 0, 0, 0.1);
+      transform: scale(1);
+    }
+  }
+
+  &.colorRed {
+    background: $red-color;
+
+    &:hover {
+      background: $red-color-hover;
+    }
+
+    &:active {
+      background: $red-color-active;
+      transform: scale(0.98);
+    }
+
+    &:disabled,
+    &:disabled:hover,
+    &:disabled:active,
+    &:disabled:focus {
+      background: $gray;
+      color: $quaternary-color;
+      box-shadow: dynamic-vw(1920, -2px) dynamic-vw(1920, 2px)
+      dynamic-vw(1920, 10px) 0px rgba(0, 0, 0, 0.1);
+      transform: scale(1);
+    }
+  }
+
+  &.colorGray {
+    background: $closeremarkcolor;
+  }
+
+  &.colorYellow {
+    background: $openremarkcolor;
+  }
+
+  &.colorBlue {
+    background: $verifiedremarkcolor;
+  }
+
+  &.colorGreen {
+    background: $readyremarkcolor;
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+}
+
+.secondaryButton {
+  @extend %raleway-medium;
+  font-size: dynamic-vw(1920, 14px);
+  line-height: dynamic-vw(1920, 18px);
+  border-radius: dynamic-vw(1920, 10px);
+  border: 1px solid $primary-color;
+  box-shadow: dynamic-vw(1920, -2px) dynamic-vw(1920, 2px)
+  dynamic-vw(1920, 10px) 0px rgba(0, 0, 0, 0.1);
+  height: max-content;
+
+  &.big {
+    padding: dynamic-vw(1920, 9px) dynamic-vw(1920, 30px);
+  }
+
+  &.small {
+    padding: dynamic-vw(1920, 6px) dynamic-vw(1920, 16px);
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: transparent;
+    box-shadow: dynamic-vw(1920, -2px) dynamic-vw(1920, 2px)
+    dynamic-vw(1920, 10px) 0px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  &.colorPrimary {
+    color: $primary-color;
+    background: transparent;
+
+    &:hover {
+      color: $primary-color-hover;
+      border-color: $primary-color-hover;
+    }
+
+    &:active {
+      color: $primary-color-active;
+      border-color: $primary-color-active;
+      transform: scale(0.98);
+    }
+
+    &:disabled,
+    &:disabled:hover,
+    &:disabled:active,
+    &:disabled:focus {
+      background: transparent;
+      color: $quaternary-color;
+      border: 1px solid $quaternary-color;
+      box-shadow: dynamic-vw(1920, -2px) dynamic-vw(1920, 2px)
+      dynamic-vw(1920, 10px) 0px rgba(0, 0, 0, 0.1);
+      transform: scale(1);
+    }
+  }
+}
+
+.iconPrimaryButton {
+  @extend %raleway-medium;
+  font-size: dynamic-vw(1920, 14px);
+  line-height: dynamic-vw(1920, 18px);
+  border-radius: dynamic-vw(1920, 20px);
+  border: none;
+  color: $white;
+  box-shadow: dynamic-vw(1920, -2px) dynamic-vw(1920, 2px)
+  dynamic-vw(1920, 10px) 0px rgba(0, 0, 0, 0.1);
+  height: max-content;
+  padding: dynamic-vw(1920, 7px) dynamic-vw(1920, 30px);
+  display: flex;
+  align-items: center;
+
+  svg,
+  svg path,
+  svg path fill {
+    transition: 0.3s ease-in-out;
+  }
+
+  span {
+    margin-left: dynamic-vw(1920, 8px);
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $white;
+    box-shadow: dynamic-vw(1920, -2px) dynamic-vw(1920, 2px)
+    dynamic-vw(1920, 10px) 0px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  &.colorPrimary {
+    background: $primary-color;
+
+    &:hover {
+      background: $primary-color-hover;
+    }
+
+    &:active {
+      background: $primary-color-active;
+      transform: scale(0.98);
+    }
+
+    &:disabled,
+    &:disabled:hover,
+    &:disabled:active,
+    &:disabled:focus {
+      background: $gray;
+      color: $quaternary-color;
+      box-shadow: dynamic-vw(1920, -2px) dynamic-vw(1920, 2px)
+      dynamic-vw(1920, 10px) 0px rgba(0, 0, 0, 0.1);
+      transform: scale(1);
+    }
+  }
+}
+
+.iconSecondaryButton {
+  @extend %raleway-medium;
+  font-size: dynamic-vw(1920, 14px);
+  line-height: dynamic-vw(1920, 18px);
+  border-radius: dynamic-vw(1920, 20px);
+  border: 1px solid $primary-color;
+  box-shadow: dynamic-vw(1920, -2px) dynamic-vw(1920, 2px)
+  dynamic-vw(1920, 10px) 0px rgba(0, 0, 0, 0.1);
+  height: max-content;
+  padding: dynamic-vw(1920, 6px) dynamic-vw(1920, 30px);
+  display: flex;
+  align-items: center;
+
+  svg,
+  svg path,
+  svg path fill {
+    transition: 0.3s ease-in-out;
+  }
+
+  span {
+    margin-left: dynamic-vw(1920, 8px);
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: transparent;
+    box-shadow: dynamic-vw(1920, -2px) dynamic-vw(1920, 2px)
+    dynamic-vw(1920, 10px) 0px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  &.colorPrimary {
+    color: $primary-color;
+    background: transparent;
+
+    &:hover {
+      color: $primary-color-hover;
+      border-color: $primary-color-hover;
+    }
+
+    &:active {
+      color: $primary-color-active;
+      border-color: $primary-color-active;
+      transform: scale(0.98);
+    }
+
+    &:disabled,
+    &:disabled:hover,
+    &:disabled:active,
+    &:disabled:focus {
+      background: transparent;
+      color: $quaternary-color;
+      border: 1px solid $quaternary-color;
+      box-shadow: dynamic-vw(1920, -2px) dynamic-vw(1920, 2px)
+      dynamic-vw(1920, 10px) 0px rgba(0, 0, 0, 0.1);
+      transform: scale(1);
+    }
+  }
+}
+
+.cleanButton {
+  @extend %raleway-medium;
+  font-size: dynamic-vw(1920, 14px);
+  line-height: dynamic-vw(1920, 18px);
+  background: transparent;
+  color: $primary-text;
+  border: none;
+  padding: 0;
+  height: max-content;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: transparent;
+    color: $primary-text;
+    border: none;
+  }
+
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:active,
+  &:disabled:focus {
+    background: transparent;
+    color: $quaternary-color;
+    border: none;
+  }
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.authButton {
+  @extend %raleway-medium;
+  font-size: dynamic-vw(1920, 20px);
+  line-height: dynamic-vw(1920, 24px);
+  background: $primary-color;
+  border-radius: dynamic-vw(1920, 5px);
+  border: none;
+  color: $white;
+  height: max-content;
+  padding: dynamic-vw(1920, 15px);
+
+  &:hover,
+  &:active {
+    background: $white;
+    color: $primary-color;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2),
+    0px dynamic-vw(1920, 1px) dynamic-vw(1920, 3px) 0px rgba(0, 0, 0, 0.2),
+    0px dynamic-vw(1920, 5px) dynamic-vw(1920, 5px) 0px rgba(0, 0, 0, 0.17),
+    0px dynamic-vw(1920, 12px) dynamic-vw(1920, 7px) 0px rgba(0, 0, 0, 0.1),
+    0px dynamic-vw(1920, 22px) dynamic-vw(1920, 9px) 0px rgba(0, 0, 0, 0.03),
+    0px dynamic-vw(1920, 34px) dynamic-vw(1920, 10px) 0px rgba(0, 0, 0, 0);
+  }
+
+  &:focus {
+    background: $primary-color;
+    color: $white;
+
+    &:hover,
+    &:active {
+      background: $white;
+      color: $primary-color;
+      box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2),
+      0px dynamic-vw(1920, 1px) dynamic-vw(1920, 3px) 0px rgba(0, 0, 0, 0.2),
+      0px dynamic-vw(1920, 5px) dynamic-vw(1920, 5px) 0px rgba(0, 0, 0, 0.17),
+      0px dynamic-vw(1920, 12px) dynamic-vw(1920, 7px) 0px rgba(0, 0, 0, 0.1),
+      0px dynamic-vw(1920, 22px) dynamic-vw(1920, 9px) 0px rgba(0, 0, 0, 0.03),
+      0px dynamic-vw(1920, 34px) dynamic-vw(1920, 10px) 0px rgba(0, 0, 0, 0);
+    }
+  }
+
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:active,
+  &:disabled:focus {
+    background: $gray;
+    color: $quaternary-color;
+    box-shadow: dynamic-vw(1920, -2px) dynamic-vw(1920, 2px)
+    dynamic-vw(1920, 10px) 0px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.iconButton {
+  border: 0;
+  display: flex;
+  align-items: center;
+  height: max-content;
+  box-shadow: none;
+  transition: 0.3s ease-in-out;
+
+  button {
+    border: 0;
+    display: flex;
+    align-items: center;
+    height: max-content;
+    box-shadow: none;
+    padding: 0;
+    background-color: transparent;
+    transition: 0.3s ease-in-out;
+  }
+
+  &:disabled,
+  &.ant-tooltip-disabled-compatible-wrapper {
+    background-color: $gray !important;
+
+    svg,
+    svg path,
+    svg path {
+      fill: $quaternary-color !important;
+    }
+  }
+
+  &.big {
+    padding: dynamic-vw(1920, 16px);
+    border-radius: dynamic-vw(1920, 20px);
+  }
+
+  &.small {
+    padding: dynamic-vw(1920, 4px);
+    border-radius: dynamic-vw(1920, 6px);
+  }
+
+  &.medium {
+    padding: dynamic-vw(1920, 7px);
+    border-radius: dynamic-vw(1920, 6px);
+    background-color: $bg-color !important;
+
+    &:hover {
+      background: $white-600 !important;
+    }
+
+    &:active {
+      background: $primarylight-color !important;
+      transform: scale(0.98);
+    }
+
+    &:disabled {
+      background-color: $gray !important;
+    }
+  }
+
+  &.colorPrimary {
+    background: $white;
+
+    &:hover {
+      background: $white-600;
+    }
+
+    &:active {
+      background: $primarylight-color;
+      transform: scale(0.98);
+    }
+  }
+
+  &.colorGray {
+    background: $bg-color;
+
+    &:hover {
+      background: $white-600;
+    }
+
+    &:active {
+      background: $primarylight-color;
+      transform: scale(0.98);
+    }
+  }
+}

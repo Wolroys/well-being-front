@@ -1,0 +1,27 @@
+.Skeleton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent !important;
+
+  &__input {
+    border-radius: 10px;
+    min-width: 220px !important;
+    width: 100% !important;
+    height: 40px !important;
+  }
+}
+
+.ant-skeleton-active .ant-skeleton-title::after,
+.ant-skeleton-active .ant-skeleton-paragraph > li::after,
+.ant-skeleton-active .ant-skeleton-avatar::after,
+.ant-skeleton-active .ant-skeleton-button::after,
+.ant-skeleton-active .ant-skeleton-input::after,
+.ant-skeleton-active .ant-skeleton-image::after {
+  background: linear-gradient(
+                  90deg,
+                  rgba(190, 190, 190, 0.15) 25%,
+                  rgba(129, 129, 129, 0.15) 37%,
+                  rgba(190, 190, 190, 0.15) 63%
+  );
+}

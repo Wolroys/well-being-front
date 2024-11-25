@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useLoginUserMutation } from "../../api/auth";
 import { useNavigate } from "react-router-dom";
 import Index from "../../component/Alert";
+import { accountSlice } from "../../store/accountSlice";
+import store from "../../store";
 
 interface FormData {
     email: string;
@@ -31,11 +33,12 @@ const Login: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        try {
-            await loginUser(formData).unwrap();
+        const response: {data?: any; error?: any} = await loginUser(formData);
+        if (response.data) {
+            store.dispatch(accountSlice.actions.login(response.data));
             navigate("/");
-        } catch (error) {
-            console.error("Ошибка авторизации:", error);
+        } else if (response.error) {
+            console.error("Ошибка авторизации:", response.error);
             setAlertData({
                 type: "error",
                 title: "Ошибка авторизации",

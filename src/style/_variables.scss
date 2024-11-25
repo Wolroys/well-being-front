@@ -1,0 +1,65 @@
+/* Шрифты */
+%raleway-extralight {
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+}
+
+%raleway-semibold {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+}
+
+%raleway-medium {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+}
+
+%raleway-regular {
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+}
+
+/* Стандартные цвета */
+$primary-color: #00a2e1;
+$primary-color-hover: #45bfff;
+$primary-color-active: #1093c6;
+$primary-text: #172b4d;
+$error-color: #ff0000;
+$bg-color: #f0f2f5;
+$gray: #c8c7da;
+$gray-hover-color: #fafafa;
+$green: #50cfbc;
+$dark-green: #008000;
+$red: #cf5050;
+$yellow: #ffba54;
+$draftColor: #ebd700;
+$primarylight-color: #e6f7ff;
+$stroke-input-default: rgba(123, 131, 149, 0.6);
+$input-fill-disabled: #c9c9c9;
+$shadow-input: #1890ff;
+$shadow-button: rgba(0, 0, 0, 0.26);
+$shadow-main: rgba(0, 0, 0, 0.1);
+$quaternary-color: #7b8395;
+$quaternary-color-60: rgba(122, 130, 148, 0.6);
+$quaternary-color-600: #414b56;
+$disabled: rgba(255, 255, 255, 0.8);
+$color-done: rgba(80, 207, 188, 1);
+$color-done-30: rgba(80, 207, 188, 0.3);
+$bg-black: #0c0d10;
+$border-gray: #a6a6a6;
+$white: #ffffff;
+$white-600: #d8d8d8;
+$red-color: #ff7584;
+$red-color-hover: rgba(255, 117, 132, 0.7);
+$red-color-active: #cf5050;
+$grey-light: #F7F7F7;
+$grey-dark: #D4D4D4;
+/* Цвета статусов замечаний */
+$openremarkcolor: #ebd700;
+$readyremarkcolor: #50cfbc;
+$criticalmarkcolor: #b52929;
+$verifiedremarkcolor: #45bfff;
+$closeremarkcolor: #b1b1b1;
+
+/* Прочее */
+$iconSizeSmall: 25px;

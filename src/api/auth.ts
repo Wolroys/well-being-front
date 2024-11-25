@@ -5,7 +5,6 @@ interface UserData {
     lastName?: string;
     email: string;
     password: string;
-    password_confirmation?: string;
 }
 
 export const authApi = createApi({
