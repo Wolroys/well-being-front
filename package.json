@@ -13,6 +13,7 @@
     "axios": "^1.7.7",
     "date-fns": "^4.1.0",
     "husky": "^9.1.6",
+    "query-string": "^7.1.1",
     "i18next": "^21.9.2",
     "lint-staged": "^15.2.10",
     "lodash.isempty": "^4.4.0",

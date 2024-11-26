@@ -1,0 +1,152 @@
+@import "/src/style/variables";
+
+h1.h1_sb,
+h2.h2_m,
+h2.h2_sb,
+h3.h3_r,
+h3.h3_m,
+h3.h3_sb,
+div.p_r,
+div.p_m,
+div.p_sb,
+span.span_m,
+span.span_r {
+  margin: 0;
+  padding: 0;
+  color: $primary-text;
+
+  &.delete {
+    color: $error-color;
+  }
+
+  pre {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    background: inherit;
+    border: 0;
+    border-radius: 0;
+    font-size: inherit;
+    font-family: inherit;
+    overflow: hidden;
+  }
+}
+
+h1 {
+  &.h1_sb {
+    @extend %raleway-semibold;
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+
+h2 {
+  &.h2_m {
+    @extend %raleway-medium;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  &.h2_sb {
+    @extend %raleway-semibold;
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+
+h3 {
+  &.h3_r {
+    @extend %raleway-regular;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  &.h3_m {
+    @extend %raleway-medium;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  &.h3_sb {
+    @extend %raleway-semibold;
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+div {
+  &.p_r {
+    @extend %raleway-regular;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  &.p_m {
+    @extend %raleway-medium;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  &.p_sb {
+    @extend %raleway-semibold;
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+span {
+  &.span_m {
+    @extend %raleway-medium;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  &.span_r {
+    @extend %raleway-regular;
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
+
+a.ant-typography,
+.ant-typography a {
+  color: $primary-color;
+}
+
+a.ant-typography:focus-visible,
+.ant-typography a:focus-visible,
+a.ant-typography:hover,
+.ant-typography a:hover {
+  color: $primary-color-hover;
+}
+
+@media only screen and (max-width: 575px) {
+  h3 {
+    &.h3_r {
+      font-size: 12px;
+      line-height: 14px;
+    }
+
+    &.h3_m {
+      font-size: 12px;
+      line-height: 14px;
+    }
+
+    &.h3_sb {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+
+  h2 {
+    &.h2_m {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    &.h2_sb {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+}

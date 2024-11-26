@@ -11,11 +11,9 @@ import {t} from "i18next";
 import moment from "moment-timezone";
 import {ItemType} from "antd/lib/menu/hooks/useItems";
 import {CalendarEventDateType, ColorItemData} from "../../../model/ICalendar";
-import {IFullUser, IUser} from "../../../model/IUser";
+import {IUser} from "../../../model/IUser";
 import UserListModal from "../UserListModal";
-import {typeOfWorkAPI} from "../../../api/typeOfWork";
 import {useSelector} from "react-redux";
-import {ITypeOfWork} from "../../../models/ITypesOfWork";
 import ButtonSimple from "../ButtonSimple";
 import Button from "../Button/Button";
 import CircleClose from "../../icons/CircleClose";
@@ -331,7 +329,7 @@ const CalendarAddEvent = (props: Props) => {
         }
     }, [eventDate]);
 
-    const [participantsList, setParticipantsList] = useState<IFullUser[]>([]);
+    const [participantsList, setParticipantsList] = useState<IUser[]>([]);
 
     useEffect(() => {
         if (account?.data) {
@@ -356,7 +354,7 @@ const CalendarAddEvent = (props: Props) => {
         eventColorList[0],
     );
 
-    const addParticipantToList = (newParticipant: IFullUser) => {
+    const addParticipantToList = (newParticipant: IUser) => {
         const isIncludes = participantsList.find(
             item => item.id === newParticipant.id,
         );
@@ -366,7 +364,7 @@ const CalendarAddEvent = (props: Props) => {
         setParticipantsList(newParticipantList);
     };
 
-    const onSubmitParticipantModal = (newParticipant: IFullUser) => {
+    const onSubmitParticipantModal = (newParticipant: IUser) => {
         if(newParticipant?.id !== account?.data?.id) {
             addParticipantToList(newParticipant);
         }
@@ -467,7 +465,7 @@ const CalendarAddEvent = (props: Props) => {
                         onAddTag={() => setParticipantsModal(true)}
                         data={participantsList.map(item => {
                             return {
-                                text: `${item.name} ${item.last_name}`,
+                                text: `${item.name} ${item.lastName}`,
                                 onItemIcon: () => deleteParticipant(item.id),
                                 icon: <CircleClose />,
                                 disabled: item?.id === account?.data?.id,

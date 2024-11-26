@@ -12,6 +12,11 @@ export type ICalendarDay = {
     events: EventType[];
 } | null;
 
+export type ColorItemData = {
+    color: string;
+    id: string;
+};
+
 export interface ICalendarWeek {
     mon: ICalendarDay;
     tue: ICalendarDay;

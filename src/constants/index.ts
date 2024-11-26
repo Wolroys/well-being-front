@@ -4,3 +4,5 @@ export const COLOR_TEXT = "#172b4d";
 
 export const COLOR_QUATERNARY = "rgba(123, 131, 149, 1)";
 export const COLOR_RED_ACTIVE = "#cf5050";
+
+export const PAGE_SIZE = 10;

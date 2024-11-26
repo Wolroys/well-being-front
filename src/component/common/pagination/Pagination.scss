@@ -1,0 +1,54 @@
+@import "../../../style/variables";
+
+.pagination {
+  display: flex;
+  align-items: center;
+
+  &__pages {
+    margin-right: 20px !important;
+  }
+
+  .ant-pagination-prev .ant-pagination-item-link,
+  .ant-pagination-next .ant-pagination-item-link {
+    border: none;
+  }
+  .project__image {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .ant-pagination-item-active {
+    background: $primary-color !important;
+    border: none;
+    border-radius: 20px;
+    width: 60px;
+    height: 40px;
+    padding: 10px 20px;
+    @extend %raleway-semibold;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .ant-pagination-item {
+    border: none;
+    background: none;
+    height: 40px;
+    padding: 10px 0;
+    @extend %raleway-regular;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .ant-pagination-item-link {
+    background: none !important;
+  }
+  .ant-pagination-item-active a {
+    color: #ffffff;
+  }
+  .pagination p {
+    margin: 0px;
+    font-size: 16px;
+    padding: 5px 0px 10px 5px;
+  }
+  .ant-pagination-options {
+    display: none;
+  }
+}

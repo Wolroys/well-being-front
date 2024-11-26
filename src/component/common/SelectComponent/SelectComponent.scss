@@ -1,0 +1,177 @@
+@import "../../../style/constants.scss";
+@import "../../../style/variables";
+
+.SelectComponent {
+  min-width: 220px;
+  height: 40px;
+  @extend %raleway-regular;
+  font-size: 14px;
+  line-height: 16px;
+
+  .ant-select-arrow {
+    margin-top: 0px;
+    transform: translateY(-50%);
+  }
+
+  .ant-select-selector {
+    height: 40px !important;
+    border-radius: 10px !important;
+  }
+
+  .ant-select-selection-item, .ant-select-selection-placeholder {
+    display: flex;
+    align-items: center;
+  }
+
+  &__skeleton {
+    min-width: 220px;
+    width: 100% !important;
+    border-radius: 10px !important;
+    height: 40px !important;
+    display: block;
+  }
+
+  &__option {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .CheckboxComponent {
+      margin-right: 6px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+// .ant-select-selector {
+//   border: 1px solid $stroke-input-default !important;
+//   border-radius: 10px !important;
+//   height: 40px !important;
+//   align-items: center !important;
+//   padding: 0 10px !important;
+//   @extend %raleway-regular;
+//   font-size: 14px;
+//   line-height: 16px;
+//   color: $primary-text;
+//   overflow: hidden;
+//   cursor: pointer !important;
+
+//   &::placeholder {
+//     color: $gray !important;
+//   }
+
+//   &:hover,
+//   &:active,
+//   &:focus {
+//     border-color: $primary-color !important;
+//     box-shadow: 0px 0px 6px 0px $shadow-input !important;
+//   }
+
+//   &:disabled {
+//     border-color: $stroke-input-default !important;
+//     background-color: $input-fill-disabled !important;
+//     color: $quaternary-color !important;
+//     opacity: 0.5;
+
+//     &:hover,
+//     &:active,
+//     &:focus {
+//       border-color: $stroke-input-default !important;
+//       box-shadow: none !important;
+//     }
+//   }
+
+//   & .ant-select-selection-search {
+//     cursor: pointer !important;
+//   }
+// }
+
+.ant-select-disabled {
+  .ant-select-selector {
+    border-color: $stroke-input-default !important;
+    background-color: $input-fill-disabled !important;
+    color: $quaternary-color !important;
+    box-shadow: none !important;
+    opacity: 0.5;
+
+    &:hover,
+    &:active,
+    &:focus {
+      border-color: $stroke-input-default !important;
+      background-color: $input-fill-disabled !important;
+      color: $quaternary-color !important;
+      box-shadow: none !important;
+      opacity: 0.5;
+    }
+  }
+}
+
+.ant-select-focused:not(.ant-select-disabled).ant-select:not(
+    .ant-select-customize-input
+  )
+.ant-select-selector {
+  border-color: $primary-color !important;
+  box-shadow: 0px 0px 6px 0px $shadow-input !important;
+}
+
+.ant-select-single:not(.ant-select-customize-input)
+.ant-select-selector
+.ant-select-selection-search-input {
+  height: 40px !important;
+  @extend %raleway-regular;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.ant-select-arrow {
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.ant-select-open .ant-select-arrow {
+  transform: translateY(-50%) rotate(-180deg) !important;
+}
+
+.ant-select-dropdown {
+  padding: 0 !important;
+  border-radius: 10px;
+}
+
+.ant-select-item {
+  padding: 12px 16px;
+  @extend %raleway-regular;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.ant-select-single:not(.ant-select-customize-input)
+.ant-select-selector
+.ant-select-selection-search-input {
+  height: 40px !important;
+  @extend %raleway-regular;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled)
+.ant-select-item-option-state {
+  display: none;
+}
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  font-weight: inherit;
+}
+
+.ant-select-selection-overflow {
+  flex-wrap: nowrap;
+}
+
+.ant-select-selection-overflow-item {
+  &:not(:first-child) {
+    display: none;
+  }
+}

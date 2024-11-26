@@ -1,0 +1,10 @@
+.CountFilter {
+  display: flex;
+  align-items: center;
+
+  &__select {
+    width: 90px;
+    min-width: auto !important;
+    margin-left: 10px;
+  }
+}
