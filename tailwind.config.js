@@ -1,7 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
+    './src/**/*.{js,jsx,ts,tsx}',
+    './node_modules/flyonui/dist/js/*.js',
+    '../path/to/fullcalendar/**/*.js'
   ],
   theme: {
     extend: {
@@ -21,5 +23,12 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require("flyonui"),
+    require("flyonui/plugin")
+  ],
+  flyonui: {
+    vendors: true
+  }
 }
