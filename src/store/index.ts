@@ -1,11 +1,11 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import {setupListeners} from "@reduxjs/toolkit/query";
 
-import {authApi} from "../api/auth";
+import {userApi} from "../api/user";
 import {accountSlice} from "./accountSlice"
 
 const reducers = {
-    [authApi.reducerPath]: authApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
     account: accountSlice.reducer,
 }
 
@@ -13,7 +13,7 @@ const store = configureStore({
     reducer: combineReducers(reducers),
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({serializableCheck: false}).concat(
-            authApi.middleware,
+            userApi.middleware,
         ),
 });
 

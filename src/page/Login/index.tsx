@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoginUserMutation } from "../../api/auth";
+import { useLoginUserMutation } from "../../api/user";
 import { useNavigate } from "react-router-dom";
 import Index from "../../component/Alert";
 import { accountSlice } from "../../store/accountSlice";

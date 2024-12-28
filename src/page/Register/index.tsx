@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useRegisterUserMutation } from "../../api/auth";
+import { useRegisterUserMutation } from "../../api/user";
 import { useNavigate } from "react-router-dom";
 import Index from "../../component/Alert";
 

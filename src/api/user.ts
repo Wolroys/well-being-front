@@ -7,27 +7,33 @@ interface UserData {
     password: string;
 }
 
-export const authApi = createApi({
+export const userApi = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:8080',
+        baseUrl: 'http://localhost:8080/user',
     }),
     endpoints: (builder) => ({
         registerUser: builder.mutation<void, UserData>({
             query: (userData) => ({
-                url: '/user/register',
+                url: '/register',
                 method: 'POST',
                 body: userData,
             }),
         }),
         loginUser: builder.mutation<void, UserData>({
             query: (userData) => ({
-                url: '/user/login',
+                url: '/login',
                 method: 'POST',
                 body: userData,
             }),
         }),
+        getSpeakers: builder.query({
+            query: ({ name }) => ({
+                url: '/speakers',
+                params: { name },
+            }),
+        })
     }),
 });
 
-export const { useRegisterUserMutation, useLoginUserMutation } = authApi;
+export const { useRegisterUserMutation, useLoginUserMutation, useGetSpeakersQuery } = userApi;
