@@ -1,6 +1,5 @@
-import {createApi, EndpointBuilder} from '@reduxjs/toolkit/query/react';
-import { IUser } from '../model/IUser';
-import {fetchBaseQuery} from "@reduxjs/toolkit/dist/query/react";
+import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import {IUser} from '../model/IUser';
 
 type getAllEventsBody = {
     params?: {
@@ -31,8 +30,6 @@ export type CreateEventBody = {
     params?: any;
     data: EventType;
 }
-
-
 
 export const calendarApi = createApi({
     reducerPath: 'calendarAPI',
@@ -94,3 +91,7 @@ export const calendarApi = createApi({
         })
     })
 })
+
+export const {
+    useGetAllEventsQuery
+} = calendarApi

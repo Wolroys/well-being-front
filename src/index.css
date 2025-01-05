@@ -1,3 +1,78 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.fc-day-today {
+    background-color: #ffedd5 !important; /* Жёлтый фон */
+    border: 2px solid #fbc02d !important; /* Толстая рамка */
+}
+
+/* Стили для ячеек */
+.fc-daygrid-day {
+    background-color: #FFFFFF; /* Светлый фон */
+    border: 2px solid #ddd; /* Тонкая рамка */
+}
+
+.fc-daygrid-event {
+    background-color: #fb923c !important; /* Синий фон */
+    color: white !important; /* Белый текст */
+    border-radius: 4px; /* Закруглённые края */
+    padding: 2px 5px; /* Отступы */
+}
+
+.fc-toolbar {
+    background-color: #E54B4B;
+    color: #FFFFFF;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.fc-col-header-cell {
+    background-color: #B7E3E4;
+    color: #F03F35;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.fc-daygrid-event:hover {
+    background-color: #1976d2 !important;
+    cursor: pointer;
+}
+
+.fc-scrollgrid {
+    border: 5px solid #3f51b5;
+    border-radius: 5px;
+}
+
+.fc-event-title {
+    color: black !important;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+/* Стили кнопки "Today" */
+.fc-today-button {
+    background-color: #FFFFFF !important; /* Зелёный фон */
+    color: #E54B4B !important; /* Белый текст */
+}
+
+.fc-today-button:hover {
+    background-color: #B7E3E4 !important;
+    color: black !important;
+}
+
+.fc-prev-button:hover,
+.fc-next-button:hover {
+    background-color: #1976d2 !important; /* Тёмно-синий фон при наведении */
+    cursor: pointer;
+}
+
+/* Иконки стрелок (встроенные) */
+.fc-prev-button::after,
+.fc-next-button::after {
+    font-size: 16px; /* Размер иконки */
+}
+

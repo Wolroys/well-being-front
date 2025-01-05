@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: true,
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
     './node_modules/flyonui/dist/js/*.js',
@@ -7,6 +8,18 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: {
+          lightBg: '#ffffff', // светлый фон
+          lightText: '#333333', // темный текст
+          lightBorder: '#dddddd', // светлые границы
+        },
+        secondary: {
+          light: '#d1fae5', // Светлый зеленый
+          DEFAULT: '#10b981', // Основной зеленый
+          dark: '#047857', // Темный зеленый
+        },
+      },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out",
         "fade-out": "fadeOut 0.5s ease-in-out",

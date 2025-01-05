@@ -1,13 +1,13 @@
 import React from "react";
-// import {useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const NotFound = () => {
-    // const navigate = useNavigate();
-    //
-    // const handleGoBack = () => {
-    //     navigate("/");
-    //     window.location.reload();
-    // };
+    const navigate = useNavigate();
+
+    const handleGoBack = () => {
+        navigate("/");
+        window.location.reload();
+    };
 
     return (
         <div className="grid h-screen place-content-center bg-white px-4">
@@ -45,7 +45,7 @@ const NotFound = () => {
 
                 <h1 className="mt-6 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">Uh-oh!</h1>
 
-                <p className="mt-4 text-gray-500">We can't find that page.</p>
+                <p className="mt-4 text-gray-500">Видимо страница потерялась.</p>
             </div>
         </div>
     )

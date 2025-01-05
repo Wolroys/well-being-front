@@ -4,6 +4,10 @@
   "private": true,
   "dependencies": {
     "@dnd-kit/core": "^6.2.0",
+    "@fullcalendar/core": "^6.1.15",
+    "@fullcalendar/daygrid": "^6.1.15",
+    "@fullcalendar/interaction": "^6.1.15",
+    "@fullcalendar/react": "^6.1.15",
     "@reduxjs/toolkit": "^2.3.0",
     "@tailwindcss/forms": "^0.5.9",
     "@testing-library/jest-dom": "^5.17.0",
@@ -11,6 +15,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.21.6",
     "axios": "^1.7.7",
+    "bootstrap": "^5.3.3",
     "date-fns": "^4.1.0",
     "flyonui": "^1.1.0",
     "fullcalendar": "^6.1.15",
@@ -23,7 +28,9 @@
     "query-string": "^7.1.1",
     "react": "^18.3.1",
     "react-beautiful-dnd": "^13.1.1",
+    "react-big-calendar": "^1.17.1",
     "react-content-loader": "^6.2.1",
+    "react-datepicker": "^7.5.0",
     "react-dom": "^18.3.1",
     "react-error-boundary": "^4.1.2",
     "react-i18next": "^11.18.6",
@@ -57,7 +64,9 @@
     ]
   },
   "devDependencies": {
+    "@types/date-fns": "^2.5.3",
     "@types/react-beautiful-dnd": "^13.1.8",
+    "@types/react-big-calendar": "^1.16.0",
     "tailwindcss": "^3.4.14"
   }
 }

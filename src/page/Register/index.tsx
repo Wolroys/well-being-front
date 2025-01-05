@@ -56,7 +56,7 @@ const Register: React.FC = () => {
     };
 
     const closeAlert = () => {
-        setAlertData(null); // Закрыть уведомление
+        setAlertData(null);
     };
 
     return (

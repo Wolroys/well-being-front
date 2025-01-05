@@ -1,8 +1,23 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import FullCalendar, { Calendar, EventInput, DateSelectArg, EventClickArg } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
+import Sidebar from "../../component/common/Sidebar";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useGetAllEventsQuery } from "../../api/calendar"
+
+interface CreateEventForm {
+    id: number;
+    title: string;
+    description: string;
+    startDate: Date;
+    speakerId: number;
+    url: string;
+    status: string;
+}
 
 const CalendarApp: React.FC = () => {
     const calendarRef = useRef<HTMLDivElement>(null);
@@ -10,6 +25,12 @@ const CalendarApp: React.FC = () => {
 
     let selectedEvent: FullCalendar.EventApi | null = null;
     let selectedDateInfo: DateSelectArg | null = null;
+
+    const { data: eventsData, error, isLoading } = useGetAllEventsQuery({
+        params: {},
+    });
+
+    const [startDate, setStartDate] = useState<Date | null>(null);
 
     useEffect(() => {
         const today = new Date();
@@ -21,62 +42,40 @@ const CalendarApp: React.FC = () => {
         };
 
         const formatDate = (date: Date): string =>
-            date.toLocaleDateString('en-GB', {
+            date.toLocaleDateString('ru-GB', {
                 day: 'numeric',
                 month: 'long',
                 year: 'numeric',
             });
 
-        const events: EventInput[] = [
-            {
-                title: 'Past Event',
-                start: addDays(today, -2).toISOString().split('T')[0],
-                classNames: ['fc-event-info'],
-            },
-            {
-                title: 'All Day Event',
-                start: addDays(today, 2).toISOString().split('T')[0],
-                classNames: ['fc-event-info'],
-            },
-            {
-                title: 'Long Event',
-                start: addDays(today, 2).toISOString().split('T')[0],
-                end: addDays(today, 5).toISOString().split('T')[0],
-                classNames: ['fc-event-primary'],
-            },
-            // Add other events here
-        ];
+        const events = Array.isArray(eventsData?.data) ? eventsData.data : [];
 
         const calendar = new Calendar(calendarRef.current as HTMLElement, {
-            plugins: [dayGridPlugin, timeGridPlugin, listPlugin],
+            plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
             initialView: 'dayGridMonth',
             initialDate: today.toISOString().split('T')[0],
+            events: events.map((event: any) => {
+                const start = event.startDate ? new Date(event.startDate).toISOString().split('T')[0] : today;
+
+                return {
+                    id: event.id,
+                    title: event.title,
+                    start: start,
+                    classNames: ['fc-event-primary'],
+                };
+            }),
             editable: true,
             selectable: true,
-            events: events,
+            contentHeight: 600,
+            aspectRatio: 2,
             select: (info: DateSelectArg) => {
-                const blockedStart = addDays(today, 17).getTime();
-                const blockedEnd = addDays(today, 20).getTime();
-                const selectedStart = info.start.getTime();
-                const selectedEnd = info.end ? info.end.getTime() : selectedStart;
-
-                if (
-                    (selectedStart < blockedEnd && selectedEnd > blockedStart) ||
-                    (selectedEnd > blockedStart && selectedStart < blockedEnd)
-                ) {
-                    alert('Events cannot be added in the blocked date range.');
-                    calendar.unselect();
-                    return;
-                }
-
                 selectedEvent = null;
                 selectedDateInfo = info;
 
+                setStartDate(info.start);
+
                 const modalTitle = document.getElementById('modalTitle') as HTMLHeadingElement;
                 modalTitle.textContent = `${formatDate(info.start)}`;
-
-                const eventForm = document.getElementById('eventForm') as HTMLFormElement;
-                eventForm.reset();
 
                 modalTriggerRef.current?.click();
             },
@@ -85,9 +84,6 @@ const CalendarApp: React.FC = () => {
 
                 const modalTitle = document.getElementById('modalTitle') as HTMLHeadingElement;
                 modalTitle.textContent = `${formatDate(info.event.start!)}`;
-
-                const eventTitleInput = document.getElementById('eventTitle') as HTMLInputElement;
-                eventTitleInput.value = info.event.title || '';
 
                 modalTriggerRef.current?.click();
             },
@@ -108,14 +104,12 @@ const CalendarApp: React.FC = () => {
                 } else if (selectedDateInfo) {
                     calendar.addEvent({
                         title: title,
-                        start: selectedDateInfo.startStr,
-                        end: selectedDateInfo.endStr,
-                        allDay: true,
+                        start: startDate?.toISOString().split('T')[0] + 'T00:00:00',
+                        end: startDate?.toISOString().split('T')[0] + 'T23:59:59',
                     });
                 }
             }
 
-            // Close modal (replace this with your modal library's method)
             const modal = document.getElementById('calendar-event-modal');
             modal?.classList.add('hidden');
         });
@@ -123,59 +117,83 @@ const CalendarApp: React.FC = () => {
         return () => {
             calendar.destroy();
         };
-    }, []);
+    }, [startDate, eventsData, isLoading]);
+
 
     return (
-        <div>
-            <div className="card flex not-prose p-4 w-full">
-                <div id="calendar-custom" ref={calendarRef}></div>
-            </div>
-            <button
-                type="button"
-                className="btn hidden"
-                ref={modalTriggerRef}
-                id="modalTrigger"
-                aria-haspopup="dialog"
-                aria-expanded="false"
-                aria-controls="calendar-event-modal"
-                data-overlay="#calendar-event-modal"
-            ></button>
-            <div id="calendar-event-modal" className="overlay modal overlay-open:opacity-100 hidden" role="dialog" tabIndex={-1}>
-                <div className="modal-dialog overlay-open:opacity-100">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h3 className="modal-title" id="modalTitle">
-                                Event
-                            </h3>
-                            <button
-                                type="button"
-                                className="btn btn-text btn-circle btn-sm absolute end-3 top-3"
-                                aria-label="Close"
-                                data-overlay="#calendar-event-modal"
-                            >
-                                <span className="icon-[tabler--x] size-4"></span>
-                            </button>
+        <div className="flex">
+            {/* Навигационная панель */}
+            <Sidebar />
+
+            {/* Календарь */}
+            <div className="flex-grow">
+                <div className="card flex not-prose p-4 w-full bg-gray-200 text-black">
+                    <div id="calendar-custom" ref={calendarRef}></div>
+                </div>
+                <button
+                    type="button"
+                    className="btn hidden"
+                    ref={modalTriggerRef}
+                    id="modalTrigger"
+                    aria-haspopup="dialog"
+                    aria-expanded="false"
+                    aria-controls="calendar-event-modal"
+                    data-overlay="#calendar-event-modal"
+                ></button>
+                <div id="calendar-event-modal" className="overlay modal overlay-open:opacity-100 hidden" role="dialog"
+                     tabIndex={-1}>
+                    <div className="modal-dialog overlay-open:opacity-100">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h3 className="modal-title" id="modalTitle">
+                                    Event
+                                </h3>
+                                <button
+                                    type="button"
+                                    className="btn btn-text btn-circle btn-sm absolute end-3 top-3"
+                                    aria-label="Close"
+                                    data-overlay="#calendar-event-modal"
+                                >
+                                    <span className="icon-[tabler--x] size-4"></span>
+                                </button>
+                            </div>
+                            <form id="eventForm" className="space-y-4">
+                                <div>
+                                    <label htmlFor="eventTitle" className="block text-sm font-medium text-gray-700">
+                                        Название события
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="eventTitle"
+                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        placeholder="Введите название события"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="startDate" className="block text-sm font-medium text-gray-700">
+                                        Дата начала
+                                    </label>
+                                    <DatePicker
+                                        selected={startDate}
+                                        onChange={(date) => setStartDate(date as Date)}
+                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                    />
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-soft btn-secondary"
+                                            data-overlay="#calendar-event-modal">
+                                        Close
+                                    </button>
+                                    <button type="submit" className="btn btn-primary">
+                                        Save changes
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                        <form id="eventForm">
-                            <div className="modal-body pt-0">
-                                <label className="form-control mb-4">
-                                    <div className="label">
-                                        <span className="label-text">Add event title below</span>
-                                    </div>
-                                    <input type="text" id="eventTitle" className="input" placeholder="Event title" required />
-                                </label>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-soft btn-secondary" data-overlay="#calendar-event-modal">
-                                    Close
-                                </button>
-                                <button type="submit" className="btn btn-primary">
-                                    Save changes
-                                </button>
-                            </div>
-                        </form>
                     </div>
                 </div>
+
             </div>
         </div>
     );
